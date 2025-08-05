@@ -8,7 +8,14 @@ require('dotenv').config();
 const app = express();
 
 //–– Middleware
-app.use(cors());
+const corsOptions = {
+  origin: '*', // allow all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 //–– MongoDB Connection
